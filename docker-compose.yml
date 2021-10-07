@@ -10,6 +10,16 @@ services:
     volumes:      
       - ~/projects:/projects
       - ./:/config
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    ports:
+      - 9090:80
+    environment:
+      VIRTUAL_HOST: phpmyadmin.localhost
+      PMA_PORT: 3306
+      PMA_HOST: host.docker.internal
 
   sonarqube:
     image: sonarqube:8.2-community
